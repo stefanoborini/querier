@@ -2,10 +2,12 @@ import axios from 'axios'
 const ENDPOINT_URL = "https://search.rcsb.org/rcsbsearch/v2/query"
 
 type QueryResults = {
-    ids: string[];
-    total_results: number;
+    ids: string[]; // Array with the structure ids
+    total_results: number; // total number of results. We only display the first 10 (sorted according to matching score)
 }
 
+// Function handling the search operation onto the remote data source using the 
+// protein identifier or gene name
 export async function searchForIdOrGeneName(search: string) : Promise<QueryResults> { 
     const empty: QueryResults = {
         ids: [],
