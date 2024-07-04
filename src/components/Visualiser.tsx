@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 
 type VisualiserProps = {
-    displayed: string
+    displayed: string // The structure code to be displayed. Empty string will keep the current display. 
 }
 
 function Visualiser({ displayed }: VisualiserProps) {
+    // We use effects and push the info with a side effect because 3dmol is not monitoring the change to the 
+    // data-pdb argument, hence we have to inject the new data programmatically, instead of declaratively.
     useEffect(() => {
-        if (displayed === "") {
+        if (displayed === "") { 
             return
         }
         console.log("displaying " + displayed);
@@ -19,7 +21,8 @@ function Visualiser({ displayed }: VisualiserProps) {
             viewer.zoomTo();
 	        viewer.render();
         })
-    }, [displayed])
+    }, [ displayed ])
+
     return (
         <>
             <h1>{displayed}</h1>
