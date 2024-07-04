@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
 type SearchBoxProps = {
-    onSearch: (id: string) => void;
+    onSearch: (id: string) => void; // Handler callback for the search. Called with the identifier string as specified by the user.
 }
 
 function SearchBox({ onSearch }: SearchBoxProps) {
+  // Represents the search box. 
+  // Missing the handling of return in the text input. It currently only handles explicit click on search.
+  // Could use a form or handle the enter.
   const [search, setSearch] = useState("");
   return (
       <div className="row">

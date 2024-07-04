@@ -1,11 +1,12 @@
 type ResultListProps = {
-    elements: string[];
-    totalResults: number;
-    onSelect: (x: string) => void;
+    elements: string[]; // Array of the various ids to display
+    totalResults: number; // Total number of results from the query
+    onSelect: (x: string) => void; // Handler callback for clicking on one element of the list
 }
 
 
 function ResultList({ elements, totalResults, onSelect }: ResultListProps) {
+    // Displays the list of elements returned by the query on the remote source   
     const entries = elements.map((x) => {
         return (
             <li key={x} 
